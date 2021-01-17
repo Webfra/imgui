@@ -129,6 +129,7 @@ endif()
 if( ${ImGui_Add_Renderer_OpenGL3} )
     # --------------------------------------------------------------------------
     target_link_libraries( ImGui PUBLIC glad )
+    target_compile_definitions( ImGui PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD )
     # --------------------------------------------------------------------------
     target_sources( ImGui PRIVATE
         backends/imgui_impl_opengl3.h

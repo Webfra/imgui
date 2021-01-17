@@ -55,7 +55,7 @@ endif()
 # ===========================================================================
 if( ${ImGui_Add_Windowing_SDL} )
     # --------------------------------------------------------------------------
-    target_include_directories( ImGui PUBLIC ${SDL2_INCLUDE_DIR})
+    target_include_directories( ImGui PUBLIC ${SDL2_INCLUDE_DIR} ${CMAKE_CURRENT_LIST_DIR}/backends )
     target_link_libraries(      ImGui PUBLIC ${SDL2_LIBRARY} )
     # --------------------------------------------------------------------------
     target_sources( ImGui PRIVATE
@@ -149,3 +149,14 @@ if( ${ImGui_Add_Renderer_Vulkan} )
     # --------------------------------------------------------------------------
 endif()
 # ===========================================================================
+if( ${ImGui_Add_Windowing_SDL} )
+    if( ${ImGui_Add_Renderer_OpenGL3} )
+        set ( ImGui_EXAMPLE_SDL_OPENGL_MAIN  OFF CACHE BOOL "Add SDL/OpenGL demo Application?")
+        if( ${ImGui_EXAMPLE_SDL_OPENGL_MAIN} )
+            add_executable( example_sdl_opengl3
+                    examples/example_sdl_opengl3/main.cpp
+                )
+            target_link_libraries( example_sdl_opengl3 PUBLIC ImGui )
+        endif()
+    endif()
+endif()

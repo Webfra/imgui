@@ -156,7 +156,7 @@ if( ${ImGui_Add_Windowing_SDL} )
             add_executable( example_sdl_opengl3
                     examples/example_sdl_opengl3/main.cpp
                 )
-            target_link_libraries( example_sdl_opengl3 PUBLIC ImGui )
+            target_link_libraries( example_sdl_opengl3 PUBLIC ImGui SDL2_target )
         endif()
     endif()
 endif()
